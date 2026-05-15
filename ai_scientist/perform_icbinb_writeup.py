@@ -19,7 +19,7 @@ from ai_scientist.llm import (
 
 from ai_scientist.utils.token_tracker import track_token_usage
 
-from ai_scientist.tools.semantic_scholar import search_for_papers
+from ai_scientist.tools.consensus import search_for_papers
 
 from ai_scientist.perform_vlm_review import (
     generate_vlm_img_review,
@@ -355,7 +355,7 @@ Reasons to reference papers include:
 8. Suggesting Future Research: Reference studies related to proposed future research directions.
 
 Ensure sufficient cites will be collected for all of these categories, and no categories are missed.
-You will be given access to the Semantic Scholar API; only add citations that you have found using the API.
+You will be given access to the Consensus API; only add citations that you have found using the API.
 Aim to discuss a broad range of relevant papers, not just the most popular ones.
 Make sure not to copy verbatim from prior literature to avoid plagiarism.
 You will have {total_rounds} rounds to add to the references but do not need to use them all.

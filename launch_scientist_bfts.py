@@ -6,6 +6,8 @@ import torch
 import os
 import re
 import sys
+from dotenv import load_dotenv
+load_dotenv()
 from datetime import datetime
 from ai_scientist.llm import create_client
 

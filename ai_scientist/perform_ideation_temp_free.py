@@ -6,6 +6,8 @@ import traceback
 from typing import Any, Dict, List
 
 import sys
+from dotenv import load_dotenv
+load_dotenv()
 
 sys.path.append(osp.join(osp.dirname(__file__), ".."))
 from ai_scientist.llm import (
@@ -14,11 +16,11 @@ from ai_scientist.llm import (
     get_response_from_llm,
 )
 
-from ai_scientist.tools.semantic_scholar import SemanticScholarSearchTool
+from ai_scientist.tools.consensus import ConsensusSearchTool
 from ai_scientist.tools.base_tool import BaseTool
 
 # Create tool instances
-semantic_scholar_tool = SemanticScholarSearchTool()
+semantic_scholar_tool = ConsensusSearchTool()
 
 # Define tools at the top of the file
 tools = [
@@ -72,7 +74,7 @@ ACTION:
 <The action to take, exactly one of {tool_names_str}>
 
 ARGUMENTS:
-<If ACTION is "SearchSemanticScholar", provide the search query as {{"query": "your search query"}}. If ACTION is "FinalizeIdea", provide the idea details as {{"idea": {{ ... }}}} with the IDEA JSON specified below.>
+<If ACTION is "SearchConsensus", provide the search query as {{"query": "your search query"}}. If ACTION is "FinalizeIdea", provide the idea details as {{"idea": {{ ... }}}} with the IDEA JSON specified below.>
 
 If you choose to finalize your idea, provide the IDEA JSON in the arguments:
 
