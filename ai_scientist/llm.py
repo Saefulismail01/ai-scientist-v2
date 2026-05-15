@@ -31,7 +31,7 @@ AVAILABLE_LLMS = [
     "o3-mini",
     "o3-mini-2025-01-31",
     # DeepSeek Models
-    "deepseek-coder-v2-0724",
+    "deepseek-v4-pro",
     "deepcoder-14b",
     # Llama 3 models
     "llama3.1-405b",
@@ -133,7 +133,7 @@ def get_batch_responses_from_llm(
         new_msg_history = [
             new_msg_history + [{"role": "assistant", "content": c}] for c in content
         ]
-    elif model == "deepseek-coder-v2-0724":
+    elif model == "deepseek-v4-pro":
         new_msg_history = msg_history + [{"role": "user", "content": msg}]
         response = client.chat.completions.create(
             model="deepseek-coder",
@@ -346,7 +346,7 @@ def get_response_from_llm(
         )
         content = response.choices[0].message.content
         new_msg_history = new_msg_history + [{"role": "assistant", "content": content}]
-    elif model == "deepseek-coder-v2-0724":
+    elif model == "deepseek-v4-pro":
         new_msg_history = msg_history + [{"role": "user", "content": msg}]
         response = client.chat.completions.create(
             model="deepseek-coder",
@@ -501,7 +501,7 @@ def create_client(model) -> tuple[Any, str]:
     elif "o1" in model or "o3" in model:
         print(f"Using OpenAI API with model {model}.")
         return openai.OpenAI(), model
-    elif model == "deepseek-coder-v2-0724":
+    elif model == "deepseek-v4-pro":
         print(f"Using OpenAI API with {model}.")
         return (
             openai.OpenAI(
